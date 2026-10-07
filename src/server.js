@@ -1,0 +1,65 @@
+const http = require('http');
+const router = require('./router.js');
+
+
+// Port the server runs on
+const port = process.env.PORT || process.env.NODE_PORT || 3000;
+
+
+// Function that parses the body of the request
+const parseBody = (req, res, handler) => {
+  let body = [];
+
+  // Check for errors
+  req.on('error', (err) => {
+    console.dir(err); // eslint-disable-line no-console
+    res.statusCode = 400
+    res.end();
+  });
+
+  // Add data chunks to body
+  req.on('data', (chunk) => {
+    body.push(chunk);
+  });
+
+  // Compile body and add to request
+  // If invalid data type, respond 400 Bad Request
+  req.on('end', () => {
+    const bodyStr = Buffer.concat(body).toString();
+    switch (req.headers['content-type']) {
+      case 'application/x-www-form-urlencoded':
+        req.body = query.parse(bodyStr);
+        break;
+      case 'application/json':
+        req.body = JSON.parse(bodyStr);
+        break;
+      default:
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.write(JSON.stringify({ message: "Invalid data type recieved" }));
+        res.end();
+    }
+
+    // Handle request
+    handler(req, res);
+  });
+}
+
+
+// Handler for server requests
+const onRequest = (req, res) => {
+    // Parse url
+    const url = new URL(req.url, `${req.connection.encrypted ? 'https' : 'http'}://${req.headers.host}`);
+
+    // Set the url query
+    req.query = Object.fromEntries(url.searchParams);
+
+    // Parse body of POST requests and route
+
+
+    // Route all other requests
+}
+
+
+http.createServer(onRequest).listen(port, () => {
+    console.log(`Listening on 127.0.0.1:${port}`); // eslint-disable-line no-console
+})
