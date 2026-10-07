@@ -1,0 +1,36 @@
+{
+  "name": "430project1",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/EmmaR-RIT/430-Project-1#readme",
+  "bugs": {
+    "url": "https://github.com/EmmaR-RIT/430-Project-1/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmmaR-RIT/430-Project-1.git"
+  },
+  "license": "ISC",
+  "author": "Emma Rausch",
+  "type": "commonjs",
+  "main": "src/server.js",
+  "scripts": {
+    "pretest": "eslint ./src --fix",
+    "test": "echo \"Tests Complete\"",
+    "start": "node ./src/server.js",
+    "nodemon": "nodemon -e js,html,css --watch ./src --watch ./public ./src/server.js",
+    "build": "webpack",
+    "build-dev": "webpack --mode development",
+    "watch": "webpack watch",
+    "dev": "concurrently \"npm run nodemon\" \"npm run watch\""
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "concurrently": "^10.0.5",
+    "eslint": "^10.12.0",
+    "globals": "^17.13.0",
+    "nodemon": "^3.1.14",
+    "webpack": "^5.111.1",
+    "webpack-cli": "^7.2.3"
+  }
+}
