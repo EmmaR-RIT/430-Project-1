@@ -9,7 +9,7 @@ const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
 
 // Function that parses the body of the request
-const parseBody = (req, res, url, handler) => {
+const parseBody = (req, res, path, handler) => {
 	let body = [];
 
 	// Check for errors
@@ -40,7 +40,7 @@ const parseBody = (req, res, url, handler) => {
 		}
 
 		// Handle request
-		return handler(req, res, url);
+		return handler(req, res, path);
 	});
 }
 
@@ -55,10 +55,10 @@ const onRequest = (req, res) => {
 
 	// Parse body of POST requests and route
 	if (req.method === 'POST') {
-		return parseBody(req, res, url, router.post);
+		return parseBody(req, res, url.pathname, router.post);
 	}
 	// Route all other requests
-	return router.get(req, res, url);
+	return router.get(req, res, url.pathname);
 }
 
 
