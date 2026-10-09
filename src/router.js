@@ -1,5 +1,5 @@
 const fs = require('fs');
-const database = require('./database.js');
+const db = require('./database.js');
 
 
 // Table for routes
@@ -37,7 +37,22 @@ const routes = {
 
     // API requests
     '/getCountries': {
-        dbHandler: '',
+        dbHandler: db.getCountries,
+        method: 'GET',
+        type: 'application/json'
+    },
+    '/getCapitals': {
+        dbHandler: db.getCapitals,
+        method: 'GET',
+        type: 'application/json'
+    },
+    '/getCurrencies': {
+        dbHandler: db.getCurrencies,
+        method: 'GET',
+        type: 'application/json'
+    },
+    '/getCountriesInArea': {
+        dbHandler: db.getCountriesInArea,
         method: 'GET',
         type: 'application/json'
     },
@@ -45,6 +60,17 @@ const routes = {
     //=======================
     //      POST Routes
     //=======================
+
+    '/addCountry': {
+        dbHandler: db.addCountry,
+        method: 'POST',
+        type: 'application/json'
+    },
+    '/replaceCountryData': {
+        dbHandler: db.replaceCountryData,
+        method: 'POST',
+        type: 'application/json'
+    },
 
     //========================
     //      Error Routes
@@ -113,7 +139,26 @@ const get = (req, res, path) => {
 
 // Handle a POST request
 const post = (req, res, path) => {
-    
+    // Find requested route
+    const reqRoute = routes[path]
+    // 404 if route doesnt exits
+    if (!reqRoute) return respondError(req, res, { code: 404 });
+    // Send POST request body to database
+    // dbHandler will return the status code to respond with
+    const dbCode = reqRoute.dbHandler(req.body);
+    // Return proper code after data processed
+    switch (dbCode.code) {
+        case 201:
+            return serve(req, res, 201, reqRoute.type, JSON.stringify({ message: 'Successfully added to database.' }));
+        case 204:
+            return serve(req, res, 204, reqRoute.type, JSON.stringify({}));
+        // Handle errors
+        default: {
+            const errorRoute = routes[dbCode];
+            if (!errorRoute) return respondError(req, res, { code: 500, message: 'Database returned unknown error.' });
+            else return respondError(req, res, { code: dbCode.code, message: `An error occurred in the database: ${dbCode.message}` });
+        }
+    }
 }
 
 
