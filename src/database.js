@@ -9,7 +9,7 @@ const objInQueryParams = (query, obj) => {
                 if (!query.currency || obj.finance.currency === query.currency)
                     if (!query.timezone) return true
                     else {
-                        for (let zone in obj.timezones) {
+                        for (let zone of obj.timezones) {
                             if (zone.gmtOffsetName === query.timezone) return true
                         }
                     }
@@ -21,7 +21,7 @@ const objInQueryParams = (query, obj) => {
 const getCountries = (query) => {
     const data = [];
     // Check all countries for ones that meet the query parameters
-    for (const country in db) {
+    for (const country of db) {
         // Add country to list of data to return if it meets query parameters
         // JSON parse/stringify is an easy way to deep copy an object
         if (objInQueryParams(query, country)) data.push(JSON.parse(JSON.stringify(country)));
@@ -34,7 +34,7 @@ const getCountries = (query) => {
 const getCapitals = (query) => {
     const data = [];
     // Check all countries for ones that meet the query parameters
-    for (const country in db) {
+    for (const country of db) {
         // Add country to list of data to return if it meets query parameters
         // JSON parse/stringify is an easy way to deep copy an object
         if (objInQueryParams(query, country)) data.push({ name: country.name, capital: country.capital });
@@ -47,7 +47,7 @@ const getCapitals = (query) => {
 const getCurrencies = (query) => {
     const data = [];
     // Check all countries for ones that meet the query parameters
-    for (const country in db) {
+    for (const country of db) {
         // Add country to list of data to return if it meets query parameters
         // JSON parse/stringify is an easy way to deep copy an object
         if (objInQueryParams(query, country)) data.push({ name: country.name, currency: country.finance.currency_name });
@@ -64,7 +64,7 @@ const getCountriesInArea = (query) => {
         return { code: 400, message: 'Missing query parameters' };
     }
     // Check for countries within area
-    for (const country in db) {
+    for (const country of db) {
         if (country.latitude <= query.maxLat && country.latitude >= query.minLat &&
             country.longitude < query.maxLon && country.longitude > - query.minLon)
             data.push(JSON.parse(JSON.stringify(country)));
@@ -90,7 +90,7 @@ const addCountry = (body) => {
     const { currency, currencyName, currencySymbol } = finance || body.finance;
 
     // If country already exists, update data
-    for (let country in db) {
+    for (let country of db) {
         if (name && country.name === name) {
             if (capital && country.capital !== capital) country.capital = capital;
             if (finance) {
@@ -102,8 +102,8 @@ const addCountry = (body) => {
             if (subregion && country.subregion !== subregion) country.subregion = subregion;
             if (nationality && country.nationality !== nationality) country.nationality = nationality;
             if (timezones) {
-                for (let tz in country.timezones) {
-                    for (const newtz in timezones) {
+                for (let tz of country.timezones) {
+                    for (const newtz of timezones) {
                         if (tz.zoneName === newtz.zoneName || tz.tzName === newtz.tzName) {
                             if (tz.zoneName === newtz.zoneName && tz.tzName !== newtz.tzName) tz.tzName = newtz.tzName;
                             else if (tz.zoneName !== newtz.zoneName && tz.tzName === newtz.tzName) tz.zoneName = newtz.zoneName;
@@ -141,7 +141,7 @@ const addCountry = (body) => {
     if (missingParams.length > 0) return { code: 400, message: `Missing Parameters: ${missingParams.join(', ')}` };
 
     // Verify submitted timezones
-    for (const tz in timezones) {
+    for (const tz of timezones) {
         if (!tz.zoneName || !tz.gmtOffset || !tz.gmtOffsetName || !tz.abbreviation || !tz.tzName)
             return { code: 400, message: `Timezone ${tz.tzName || tz.zoneName || 'unknown'} is missing parameters.` };
     }
@@ -188,7 +188,7 @@ const replaceCountryData = (body) => {
     if (mismatches.length > 0) return { code: 400, message: `All parameters to change need an old and new: ${mismatches.join(', ')}` };
 
     // Do replacements
-    for (let country in db) {
+    for (let country of db) {
         if (oRegion && country.region === oRegion) country.region = nRegion;
         if (oSubregion && country.subregion === oSubregion) country.subregion = nSubregion;
         if (oCurrency && country.finance.currency === oCurrency) country.finance.currency = nCurrency;

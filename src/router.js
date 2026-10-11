@@ -19,15 +19,35 @@ const routes = {
         method: 'GET',
         type: 'text/html'
     },
-    '/reset.css': {
-        path: 'reset.css',
+    '/styles/reset.css': {
+        path: 'styles/reset.css',
         method: 'GET',
         type: 'text/css'
     },
-    '/styles.css': {
-        path: 'styles.css',
+    '/styles/default.css': {
+        path: 'styles/default.css',
         method: 'GET',
         type: 'text/css'
+    },
+    '/styles/index.css': {
+        path: 'styles/index.css',
+        method: 'GET',
+        type: 'text/css'
+    },
+    '/styles/docs.css': {
+        path: 'styles/docs.css',
+        method: 'GET',
+        type: 'text/css'
+    },
+    '/fonts/Cairopixel.woff': {
+        path: 'fonts/Cairopixel.woff',
+        method: 'GET',
+        type: 'font/woff'
+    },
+    '/fonts/PixelGame.woff': {
+        path: 'fonts/PixelGame.woff',
+        method: 'GET',
+        type: 'font/woff'
     },
     '/bundle.js': {
         path: 'reset.css',
@@ -119,11 +139,11 @@ const get = (req, res, path) => {
     // If static route, load and serve file
     if (reqRoute.path) {
         // Load and handle file
-        fs.readFile(`${__dirname}/../public${reqRoute.path}`, (err, file) => {
+        fs.readFile(`${__dirname}/../public/${reqRoute.path}`, (err, file) => {
             // Handle internal errors
             if (err) {
                 return respondError(req, res, {
-                    message: 'File failed to load',
+                    message: `File ${reqRoute.path} failed to load.`,
                     code: 500
                 });
             }
@@ -131,9 +151,11 @@ const get = (req, res, path) => {
             return serve(req, res, 200, reqRoute.type, file);
         });
     }
-    // If API request, load and serve data from the database
-    const queryData = JSON.stringify(reqRoute.dbHandler(req.query));
-    return serve(req, res, 200, reqRoute.type, queryData);
+    else {
+        // If API request, load and serve data from the database
+        const queryData = JSON.stringify(reqRoute.dbHandler(req.query));
+        return serve(req, res, 200, reqRoute.type, queryData);
+    }
 }
 
 

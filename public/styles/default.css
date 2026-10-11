@@ -1,0 +1,38 @@
+@font-face {
+    font-family: "Cairopixel";
+    src: local("Cairopixel"), url("/fonts/Cairopixel.woff") format('woff');
+}
+
+* {
+    background-color: #000;
+    color: #fff;
+    font-family: Cairopixel, sans-serif;
+}
+
+header {
+    margin: 3rem auto;
+    width: 75%;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 5rem;
+}
+
+main {
+    width: 85%;
+    margin: 0 auto;
+    border: 2px solid white;
+    border-radius: 3rem;
+}
+
+footer {
+    width: 85%;
+    margin: 1rem auto 5rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+footer a {
+    font-size: 1.5rem;
+}
