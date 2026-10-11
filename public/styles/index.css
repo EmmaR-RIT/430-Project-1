@@ -1,0 +1,45 @@
+main {
+    display: flex;
+    justify-content: space-between;
+}
+
+main h1 {
+    text-align: center;
+
+}
+
+main > div {
+    margin: 3rem;
+}
+
+#apiTests {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#apiTests div {
+    margin: 1rem 0;
+    width: 60%;
+}
+
+#apiTests h2 {
+    margin-left: .75rem;
+    margin-bottom: .25rem;
+}
+
+#apiTests div form {
+    display: flex;
+    flex-direction: column;
+}
+
+.submitBtn {
+    margin: 1rem auto 0;
+    width: 75%;
+    height: 3rem;
+}
+
+#apiOutput {
+    width: 50%;
+}
