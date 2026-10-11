@@ -50,7 +50,7 @@ const getCurrencies = (query) => {
     for (const country in db) {
         // Add country to list of data to return if it meets query parameters
         // JSON parse/stringify is an easy way to deep copy an object
-        if (objInQueryParams(query, country)) data.push({ name: country.name, currency: country.finance.currency });
+        if (objInQueryParams(query, country)) data.push({ name: country.name, currency: country.finance.currency_name });
     }
     return data;
 }
