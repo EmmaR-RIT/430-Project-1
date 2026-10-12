@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,16 +9,112 @@
     <link rel="stylesheet" href="/styles/default.css">
     <link rel="stylesheet" href="/styles/docs.css">
 </head>
+
 <body>
     <header>
         <h1>CountriesAPI Documentation</h1>
     </header>
     <main>
+        <h2>GET Routes</h2>
+        <h3>/getCountries</h3>
+        <p>
+            Returns full country objects of every country meeting the given query parameters. If no paramters are given,
+            returns all countries. Valid query parameters are listed later in the documentation.
+        </p><br>
+        <h3>/getCapitals</h3>
+        <p>
+            Returns full country objects of every country meeting the given query parameters. If no paramters are given,
+            returns all countries. Valid query parameters are listed later in the documentation.
+        </p><br>
+        <h3>/getCurrencies</h3>
+        <p>
+            Returns full country objects of every country meeting the given query parameters. If no paramters are given,
+            returns all countries. Valid query parameters are listed later in the documentation.
+        </p><br>
+        <h3>/getCountriesInArea</h3>
+        <p>Returns full country objects of every country within the queried area. Requires 4 query parameters:</p>
+        <ul>
+            <li>minLat (minimum latitude)</li>
+            <li>maxLat (maximum latitude)</li>
+            <li>minLon (minimum longitude)</li>
+            <li>maxLon (maximum longitude)</li>
+        </ul>
+        <h2>POST Routes</h2>
+        <h3>/addCountry</h3>
+        <p>
+            Add a new country to the database or update an existing country.<br>
+            To create a new country, you need to upload an object that meets the Country Object structure as listed
+            below.<br>
+            To update an existing country, you must provide a name of an existing country and any of the data you want
+            to update<br>
+        </p><br>
+        <h3>/replaceCountryData</h3>
+        <p>
+            Replace all instances of some data in the database with something else. Useful for renaming things.
 
+        </p><br>
+        <h2>Generic Query Parameters for GET Routes</h2>
+        <h3>name, region, subregion, currency, timezone</h3><br>
+        <h4>Valid Regions:</h4>
+        <p>Africa, Americas, Asia, Europe, Oceania, Polar</p><br>
+        <h4>Valid Subregions:</h4>
+        <p>
+            Australia and New Zealand, Caribbean, Central America, Central Asia, Eastern Africa, Eastern Asia, Eastern
+            Europe, Melanesia, Micronesia, Middle Africa, Northern Africa, Northern America, Northern Europe, Polynesia,
+            South America, South-Eastern Asia, Southern Africa, Southern Asia, Southern Europe, Western Africa, Western
+            Asia, Western Europe
+        </p><br>
+        <h4>Valid Currency Codes:</h4>
+        <p>
+            AFN, EUR, ALL, DZD, USD, AOA, XCD, AAD, ARS, AMD, AWG, AUD, AZN, BHD, BDT, BBD, BYN, BZD, XOF, BMD, BTN,
+            BOB,
+            BAM, BWP, NOK, BRL, BND, BGN, BIF, KHR, XAF, CAD, CVE, KYD, CLP, CNY, COP, KMF, NZD, CRC, HRK, CUP, ANG,
+            CZK, CDF, DKK, DJF, DOP, EGP, ERN, SZL, ETB, FKP, FJD, XPF, GEL, GHS, GIP, GTQ, GBP, GNF, GYD, HTG, HNL,
+            HKD, HUF, ISK, INR, IDR, IRR, IQD, ILS, JMD, JPY, JOD, KZT, KES, KWD, KGS, LAK, LBP, LSL, LRD, LYD, CHF,
+            MOP, MGA, MWK, MYR, MVR, MRO, MUR, MXN, MDL, MNT, MAD, MZN, MMK, NAD, NPR, NIO, NGN, KPW, MKD, OMR, PKR,
+            PAB, PGK, PYG, PEN, PHP, PLN, QAR, RON, RUB, RWF, SHP, WST, STD, SAR, RSD, SCR, SLL, SGD, SBD, SOS, ZAR,
+            KRW, SSP, LKR, SDG, SRD, SEK, SYP, TWD, TJS, TZS, THB, BSD, GMD, TOP, TTD, TND, TRY, TMT, UGX, UAH, AED,
+            UYU, UZS, VUV, VES, VND, YER, ZMW, ZWL
+        </p><br>
+        <h4>Valid Timezone Codes:</h4>
+        <p>
+            UTC+01:00, UTC+02:00, UTC+03:00, UTC+03:30, UTC+04:00, UTC+04:30, UTC+05:00, UTC+05:30, UTC+05:45,
+            UTC+06:00,
+            UTC+06:30, UTC+07:00, UTC+08:00, UTC+08:45, UTC+09:00, UTC+09:30, UTC+10:00, UTC+10:30, UTC+11:00,
+            UTC+12:00, UTC+13:00, UTC+13:45, UTC+14:00, UTC-01:00, UTC-02:00, UTC-03:00, UTC-03:30, UTC-04:00,
+            UTC-05:00, UTC-06:00, UTC-07:00, UTC-08:00, UTC-09:00, UTC-09:30, UTC-10:00, UTC-11:00, UTC±00
+        </p><br>
+        <h2>Country Object Structure</h2>
+        <p>
+            {<br>
+            "name": string,<br>
+            "capital": string,<br>
+            "finance": {<br>
+            "currency": string,<br>
+            "currency_name": string,<br>
+            "currency_symbol": string<br>
+            },<br>
+            "region": string,<br>
+            "subregion": string,<br>
+            "nationality": string,<br>
+            "timezones": [<br>
+            {<br>
+            "zoneName": string,<br>
+            "gmtOffset": number,<br>
+            "gmtOffsetName": string,<br>
+            "abbreviation": string,<br>
+            "tzName": string<br>
+            }<br>
+            ],<br>
+            "latitude": number,<br>
+            "longitude": number<br>
+            },
+        </p>
     </main>
     <footer>
         <a href="/">API Testing Page</a>
         <a href="/documentation">API Documentation</a>
     </footer>
 </body>
+
 </html>

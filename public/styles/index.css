@@ -3,11 +3,6 @@ main {
     justify-content: space-between;
 }
 
-main h1 {
-    text-align: center;
-
-}
-
 main > div {
     margin: 3rem;
 }

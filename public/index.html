@@ -1032,13 +1032,32 @@
             </div>
             <div id="addCountryTest">
                 <h2>/addCountry</h2>
+                <form id="addCountryForm" action="/addCountry" method="get">
+                    <label>Name: <input id="addCountryName" type="text"></label>
+                    <label>Capital: <input id="addCountryCapital" type="text"></label>
+                    <label>Currency Code: <input id="addCountryCurrency" type="text"></label>
+                    <label>Currency Name: <input id="addCountryCurrencyName" type="text"></label>
+                    <label>Currency Symbol: <input id="addCountryCurrencySymbol" type="text"></label>
+                    <label>Region: <input id="addCountryRegion" type="text"></label>
+                    <label>Subregion: <input id="addCountrySubregion" type="text"></label>
+                    <label>Nationality: <input id="addCountryNationality" type="text"></label>
+                    <label>Timezone Offset: <input id="addCountryTimezone" type="text"></label>
+                    <label>Latitude: <input id="addCountryLatitude" type="number" min="-90" max="90" step="1"></label>
+                    <label>Longitude: <input id="addCountryLongitude" type="number" min="-180" max="180" step="1"></label>
+                    <input type="submit" class="submitBtn" value="Search">
+                </form>
             </div>
             <div id="replaceCountryDataTest">
                 <h2>/replaceCountryData</h2>
+                <form id="replaceCountryDataForm" action="/replaceCountryData" method="get">
+                    
+                    <input type="submit" class="submitBtn" value="Search">
+                </form>
             </div>
         </div>
         <div id="apiOutput">
             <h1>Output</h1>
+            <p id="outputText"></p>
         </div>
     </main>
     <footer>

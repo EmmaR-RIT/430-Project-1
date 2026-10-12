@@ -14,9 +14,29 @@ header {
     width: 75%;
 }
 
-header h1 {
+h1 {
     text-align: center;
     font-size: 5rem;
+}
+
+main h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+p, li, label{
+    font-size: 1.25rem;
 }
 
 main {
