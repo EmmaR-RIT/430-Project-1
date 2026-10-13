@@ -1,3 +1,9 @@
+// Doing this because eslint thinks document is undefined since it is 
+// only defined as a global variable when loaded in html
+// this stops it lying while minimizing the number of eslint disables
+// is this good practice? probably not. does it work? yes
+let document = window.document // eslint-disable-line no-undef
+
 // Div that holds the output text
 const outputText = document.querySelector('#outputText');
 

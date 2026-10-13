@@ -18,7 +18,7 @@
     "lint-server": "eslint ./src --fix",
     "lint-client": "eslint ./client --fix",
     "lint": "npm run lint-server && npm run lint-client",
-    "pretest": "npm run lint-server",
+    "pretest": "npm run lint",
     "test": "echo \"Tests Complete\"",
     "start": "node ./src/server.js",
     "nodemon": "nodemon -e js,html,css --watch ./src --watch ./public ./src/server.js",
