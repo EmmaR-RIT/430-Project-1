@@ -8,7 +8,7 @@ main > div {
 }
 
 #apiTests {
-    width: 50%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,5 +36,9 @@ main > div {
 }
 
 #apiOutput {
-    width: 50%;
+    width: 40%;
+}
+
+#outputText p {
+    margin-bottom: 1rem;
 }

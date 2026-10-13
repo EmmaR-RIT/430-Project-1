@@ -50,7 +50,7 @@ const routes = {
         type: 'font/woff'
     },
     '/bundle.js': {
-        path: 'reset.css',
+        path: 'bundle.js',
         method: 'GET',
         type: 'text/javascript'
     },

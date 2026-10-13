@@ -20,7 +20,7 @@
             <h1>API Route Tests</h1>
             <div id="getCountriesTest">
                 <h2>/getCountries</h2>
-                <form id="getCountriesForm" action="/getCountries" method="get">
+                <form id="getCountriesForm" action="/getCountries">
                     <label>Name: <input id="getCountriesName" type="text"></label>
                     <label>Region: <select id="getCountriesRegion">
                             <option value="NULL">---</option>
@@ -349,12 +349,16 @@
                             <option value="UTC-11:00">UTC-11:00</option>
                             <option value="UTC±00">UTC±00</option>
                         </select></label>
+                    <label>Request Type: <select id="getCountriesRequestType">
+                        <option value="get">GET</option>
+                        <option value="head">HEAD</option>
+                    </select></label>
                     <input type="submit" class="submitBtn" value="Search">
                 </form>
             </div>
             <div id="getCapitalsTest">
                 <h2>/getCapitals</h2>
-                <form id="getCapitalsForm" action="/getCapitals" method="get">
+                <form id="getCapitalsForm" action="/getCapitals">
                     <label>Name: <input id="getCapitalsName" type="text"></label>
                     <label>Region: <select id="getCapitalsRegion">
                             <option value="NULL">---</option>
@@ -683,12 +687,16 @@
                             <option value="UTC-11:00">UTC-11:00</option>
                             <option value="UTC±00">UTC±00</option>
                         </select></label>
+                    <label>Request Type: <select id="getCapitalsRequestType">
+                        <option value="get">GET</option>
+                        <option value="head">HEAD</option>
+                    </select></label>
                     <input type="submit" class="submitBtn" value="Search">
                 </form>
             </div>
             <div id="getCurrenciesTest">
                 <h2>/getCurrencies</h2>
-                <form id="getCurrenciesForm" action="/getCurrencies" method="get">
+                <form id="getCurrenciesForm" action="/getCurrencies">
                     <label>Name: <input id="getCurrenciesName" type="text"></label>
                     <label>Region: <select id="getCurrenciesRegion">
                             <option value="NULL">---</option>
@@ -1017,22 +1025,34 @@
                             <option value="UTC-11:00">UTC-11:00</option>
                             <option value="UTC±00">UTC±00</option>
                         </select></label>
+                    <label>Request Type: <select id="getCurrenciesRequestType">
+                        <option value="get">GET</option>
+                        <option value="head">HEAD</option>
+                    </select></label>
                     <input type="submit" class="submitBtn" value="Search">
                 </form>
             </div>
             <div id="getCountriesInAreaTest">
                 <h2>/getCountriesInArea</h2>
-                <form id="getCountriesInAreaForm" action="/getCountriesInArea" method="get">
-                    <label>Min Latitude: <input type="number" min="-90" max="90" step="1"></label>
-                    <label>Max Latitude: <input type="number" min="-90" max="90" step="1"></label>
-                    <label>Min Longitude: <input type="number" min="-180" max="180" step="1"></label>
-                    <label>Max Longitude: <input type="number" min="-180" max="180" step="1"></label>
+                <form id="getCountriesInAreaForm" action="/getCountriesInArea">
+                    <label>Min Latitude: <input id="getCountriesInAreaMinLat" type="number" min="-90" max="90"
+                            step="1"></label>
+                    <label>Max Latitude: <input id="getCountriesInAreaMaxLat" type="number" min="-90" max="90"
+                            step="1"></label>
+                    <label>Min Longitude: <input id="getCountriesInAreaMinLon" type="number" min="-180" max="180"
+                            step="1"></label>
+                    <label>Max Longitude: <input id="getCountriesInAreaMaxLon" type="number" min="-180" max="180"
+                            step="1"></label>
+                    <label>Request Type: <select id="getCountriesInAreaRequestType">
+                        <option value="get">GET</option>
+                        <option value="head">HEAD</option>
+                    </select></label>
                     <input type="submit" class="submitBtn" value="Search">
                 </form>
             </div>
             <div id="addCountryTest">
                 <h2>/addCountry</h2>
-                <form id="addCountryForm" action="/addCountry" method="get">
+                <form id="addCountryForm" action="/addCountry" method="post">
                     <label>Name: <input id="addCountryName" type="text"></label>
                     <label>Capital: <input id="addCountryCapital" type="text"></label>
                     <label>Currency Code: <input id="addCountryCurrency" type="text"></label>
@@ -1043,21 +1063,30 @@
                     <label>Nationality: <input id="addCountryNationality" type="text"></label>
                     <label>Timezone Offset: <input id="addCountryTimezone" type="text"></label>
                     <label>Latitude: <input id="addCountryLatitude" type="number" min="-90" max="90" step="1"></label>
-                    <label>Longitude: <input id="addCountryLongitude" type="number" min="-180" max="180" step="1"></label>
-                    <input type="submit" class="submitBtn" value="Search">
+                    <label>Longitude: <input id="addCountryLongitude" type="number" min="-180" max="180"
+                            step="1"></label>
+                    <label>Data Type: <select id="addCountryMIMEType">
+                            <option value="json">JSON</option>
+                            <option value="x-www-form-urlencoded">URL Encoded</option>
+                        </select></label>
+                    <input type="submit" class="submitBtn" value="Submit">
                 </form>
             </div>
             <div id="replaceCountryDataTest">
                 <h2>/replaceCountryData</h2>
-                <form id="replaceCountryDataForm" action="/replaceCountryData" method="get">
-                    
-                    <input type="submit" class="submitBtn" value="Search">
+                <form id="replaceCountryDataForm" action="/replaceCountryData" method="post">
+
+                    <label>Data Type: <select id="addCountryMIMEType">
+                            <option value="json">JSON</option>
+                            <option value="x-www-form-urlencoded">URL Encoded</option>
+                        </select></label>
+                    <input type="submit" class="submitBtn" value="Submit">
                 </form>
             </div>
         </div>
         <div id="apiOutput">
             <h1>Output</h1>
-            <p id="outputText"></p>
+            <div id="outputText"></div>
         </div>
     </main>
     <footer>
