@@ -51,8 +51,21 @@
         <h3>/replaceCountryData</h3>
         <p>
             Replace all instances of some data in the database with something else. Useful for renaming things.
-
         </p><br>
+        <h4>Query Parameters</h4>
+        <p>
+            Each query parameter has an old and new version, representing the existing data and what to replace it with.
+            While no parameters are required, it is required to have the whole pair if you use one. 
+            The syntax is the parameter capitalized with 'o' or 'n' before it for old/new respectively (ex: oRegion, nRegion).<br>
+            The parameters are:
+            <ul>
+                <li>Region</li>
+                <li>Subregion</li>
+                <li>Currency (ie currency code)</li>
+                <li>CurrencyName</li>
+                <li>CurrencySymbol</li>
+            </ul>
+        </p>
         <h2>Generic Query Parameters for GET Routes</h2>
         <h3>name, region, subregion, currency, timezone</h3><br>
         <h4>Valid Regions:</h4>

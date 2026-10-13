@@ -37,6 +37,16 @@ To update an existing country, you must provide a name of an existing country an
 
 Replace all instances of some data in the database with something else. Useful for renaming things.
 
+#### Query Parameters
+
+Each query parameter has an old and new version, representing the existing data and what to replace it with. While no parameters are required, it is required to have the whole pair if you use one. The syntax is the parameter capitalized with 'o' or 'n' before it for old/new respectively (ex: oRegion, nRegion).
+The parameters are:
+- Region
+- Subregion
+- Currency (ie currency code)
+- CurrencyName
+- CurrencySymbol
+
 ## Generic Query Parameters for GET Routes
 
 ### name, region, subregion, currency, timezone
