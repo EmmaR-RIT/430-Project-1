@@ -1061,7 +1061,6 @@
                     <label>Region: <input id="addCountryRegion" type="text"></label>
                     <label>Subregion: <input id="addCountrySubregion" type="text"></label>
                     <label>Nationality: <input id="addCountryNationality" type="text"></label>
-                    <label>Timezone Offset: <input id="addCountryTimezone" type="text"></label>
                     <label>Latitude: <input id="addCountryLatitude" type="number" min="-90" max="90" step="1"></label>
                     <label>Longitude: <input id="addCountryLongitude" type="number" min="-180" max="180"
                             step="1"></label>
@@ -1075,8 +1074,17 @@
             <div id="replaceCountryDataTest">
                 <h2>/replaceCountryData</h2>
                 <form id="replaceCountryDataForm" action="/replaceCountryData" method="post">
-
-                    <label>Data Type: <select id="addCountryMIMEType">
+                    <label>Old Region: <input id="replaceCountryDataOldRegion" type="text"></label>
+                    <label>New Region: <input id="replaceCountryDataNewRegion" type="text"></label>
+                    <label>Old Subregion: <input id="replaceCountryDataOldSubregion" type="text"></label>
+                    <label>New Subregion: <input id="replaceCountryDataNewSubregion" type="text"></label>
+                    <label>Old Currency Code: <input id="replaceCountryDataOldCurrency" type="text"></label>
+                    <label>New Currency Code: <input id="replaceCountryDataNewCurrency" type="text"></label>
+                    <label>Old Currency Name: <input id="replaceCountryDataOldCurrencyName" type="text"></label>
+                    <label>New Currency Name: <input id="replaceCountryDataNewCurrencyName" type="text"></label>
+                    <label>Old Currency Symbol: <input id="replaceCountryDataOldCurrencySymbol" type="text"></label>
+                    <label>New Currency Symbol: <input id="replaceCountryDataNewCurrencySymbol" type="text"></label>
+                    <label>Data Type: <select id="replaceCountryDataMIMEType">
                             <option value="json">JSON</option>
                             <option value="x-www-form-urlencoded">URL Encoded</option>
                         </select></label>
